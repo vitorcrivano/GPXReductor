@@ -14,39 +14,48 @@ public class TrackPoint {
 		this.time = time;
 	}
 	
-	public TrackPoint() {
+	public TrackPoint() 
+        {
 		super();
 	}
 
-	public float getLatitude() {
+	public float getLatitude() 
+        {
 		return latitude;
 	}
-
-	public void setLatitude(float latitude) {
-		this.latitude = latitude;
-	}
-
-	public float getLongitude() {
+        
+        public float getLongitude() 
+        {
 		return longitude;
 	}
-
-	public void setLongitude(float longitude) {
-		this.longitude = longitude;
-	}
-
-	public float getEle() {
+        
+        public float getEle() 
+        {
 		return ele;
 	}
 
-	public void setEle(float ele) {
+	public String getTime() 
+        {
+		return time;	
+        }
+        
+        public void setLatitude(float latitude) 
+        {
+		this.latitude = latitude;
+	}
+        
+	public void setLongitude(float longitude) 
+        {
+		this.longitude = longitude;	
+        }	
+
+	public void setEle(float ele) 
+        {
 		this.ele = ele;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
+	}	
+       
+	public void setTime(String time) 
+        {
 		this.time = time;
 	}
 
