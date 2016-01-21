@@ -1,0 +1,41 @@
+
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import Routine.VerifyParametres;
+
+public class GpxReductorTest {
+
+	@Test
+
+	//GPX file?
+	public void testGPXFiles() {
+		String firstFile = "testIn.gpx";
+		String secondFile = "testOut.gpx";
+		assertTrue(VerifyParametres.GPXFiles(firstFile, secondFile));
+	}
+	
+	//not GPX file?
+	public void testNotGPXFiles() {
+		String firstFile = "testIn.jpeg";
+		String secondFile = "testOut.gpx";
+		assertFalse(VerifyParametres.GPXFiles(firstFile, secondFile));
+	}
+
+	//empty file??
+	public void testFileIsEmpty() {
+		String firstFile = ".gpx";
+		String secondFile = "testOut.gpx";
+		assertFalse(VerifyParametres.filesNotEmpty(firstFile, secondFile));
+	}
+
+	//not empty file?
+	public void testFileIsNotEmpty() {
+		String firstFile = "testIn.gpx";
+		String secondFile = "testOut.gpx";
+		assertTrue(VerifyParametres.filesNotEmpty(firstFile, secondFile));
+	}
+	
+}
