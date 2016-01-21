@@ -1,0 +1,68 @@
+package Test;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.junit.Test;
+import org.xml.sax.SAXException;
+
+import Model.Track;
+import Model.TrackPoint;
+import XMLTreatment.XmlReader;
+
+public class FileTest {
+
+	//Create a new TrackPoint
+	static private TrackPoint createNewTrackPoint(String latitude, String longitude, String ele, String time) {
+				
+		TrackPoint trackPoint = new TrackPoint(Float.valueOf(latitude),Float.valueOf(longitude),Float.valueOf(ele),time);	
+		return trackPoint;
+	}
+
+	@Test
+	//Is the actual reading correct?
+
+	public void testTheFileReader() {
+		String FileName = "../GPXReductor/src/Files/foxboro.gpx";
+	    
+	    //Creating object lists
+	    ArrayList<Track> trackList = new ArrayList<Track>();
+	    ArrayList<TrackPoint> trackPointsList = new ArrayList<TrackPoint>();
+	  		
+	    //Read GPX File
+	    try {
+			trackList = XmlReader.ReadXML(FileName);
+		} catch (IOException | ParserConfigurationException | SAXException e) {
+			e.printStackTrace();
+		}
+	    
+	    //Getting the TrackPoint list read
+	    trackPointsList = trackList.get(0).getSegments().get(0).getTrackPoints();
+	    
+	    //Creating and adding TrackPoints to a list
+	    ArrayList<TrackPoint> trackPointlist = new ArrayList<TrackPoint>();
+	    TrackPoint firstTrackPoint = createNewTrackPoint("42.050664", "-71.267238", "63.584351", "2002-03-06T04:23:07Z");	
+	    trackPointlist.add(firstTrackPoint);
+	    TrackPoint secTrackPoint = createNewTrackPoint("43.050664", "-72.267238", "64.584351", "2002-03-06T05:20:07Z");	
+	    trackPointlist.add(secTrackPoint);
+	    
+	    //is the list size correct?
+	    assertEquals(trackPointlist.size(), trackPointsList.size());
+	    
+	    //Testing the elements of the lists
+	    for (int i = 0; i < trackPointsRead.size(); i++) {
+		    float firstElement = trackPointlist.get(i).getEle();
+		    float secondElement = trackPointsRead.get(i).getEle();
+		    
+	        //assuming that both lists are sorted and the delta is 0.0005
+	        assertEquals(firstElement , secondElement, 0.0005); 
+            
+        };
+	}
+	
+
+}
