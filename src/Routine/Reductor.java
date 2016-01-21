@@ -6,7 +6,7 @@ import Model.Track;
 import Model.TrackPoint;
 import XMLTreatment.XmlWriter;
 import XMLTreatment.XmlReader;
-import MathLogic.TrackPointReducer;
+import MathLogic.TrackPointReductor;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
@@ -68,7 +68,7 @@ public class Reductor {
 				int percentageToReduce = Integer.parseInt(toReduce.substring(0, toReduce.length()-1));
 				
 				//percentage redution
-				trackPointList = TrackPointReducer.reduceByPercentage(trackPointList, percentageToReduce);
+				trackPointList = TrackPointReductor.reduceByPercentage(trackPointList, percentageToReduce);
 			
 			} else {
 				
@@ -76,7 +76,7 @@ public class Reductor {
 				double distanceToReduce = Double.parseDouble(toReduce);
 				
 				//distance reduction
-				trackPointList = TrackPointReducer.reduceByDistance(trackPointList, distanceToReduce);
+				trackPointList = TrackPointReductor.reduceByDistance(trackPointList, distanceToReduce);
 			}
 			
 			//Adding the TrackPoints back to the Track
