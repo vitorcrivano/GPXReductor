@@ -5,18 +5,18 @@ import Model.TrackPoint;
 	
 	static public double getDistance(TrackPoint current, TrackPoint previous, TrackPoint next) {
 		
-		//latitudes
-		double x1 = previous.getLatitude(); 
-		double x2 = next.getLatitude();
-		double x3 = current.getLatitude();
-		
 		//longitudes
-		double y1 = previous.getLongitude();
-		double y2 = next.getLongitude(); 
-		double y3 = current.getLongitude(); 
+		double longitude1 = previous.getLongitude();
+		double longitude2 = next.getLongitude(); 
+		double longitude3 = current.getLongitude(); 
 		
+                //latitudes
+		double latitude1 = previous.getLatitude(); 
+		double latitude2 = next.getLatitude();
+		double latitude3 = current.getLatitude();
+                
 		//distance between points
-		double d = distanceBetweenPoints(x1, y1, x2, y2, x3, y3);
+		double d = distanceBetweenPoints(latitude1, longitude1, latitude2, longitude2, latitude3, longitude3);
 		
 		//KM to meters
 		d = d*1000;
@@ -49,7 +49,7 @@ import Model.TrackPoint;
 		
 		double b = (y1 - y2);
 		
-		//You can't divide per 0
+		//can not divide per 0
 		if(b == 0) {
 			b = 1;
 		}
@@ -65,7 +65,6 @@ import Model.TrackPoint;
 		return b;
 	}
 	
-	//Orthogonal Parameters
 	static public double calculateOrthogonalSlope(double a) {
 		
 		double orthA = -1/a;
@@ -94,21 +93,20 @@ import Model.TrackPoint;
 		
 	}
 	
-	//distance between coordinates
 	static public double haversine(double x1, double y1, double x2, double y2) {
     	
+                
+                //Getting the distance between the points in radians
+		double dLat =  Math.toRadians(x2 - x1);
+		double dLon =  Math.toRadians(y2 - y1);
+                
 		//Earth's distance in radians
 		double R = 6372.8; 
 		
-		//Getting the distance between the points in radians
-		double dLat =  Math.toRadians(x2 - x1);
-		double dLon =  Math.toRadians(y2 - y1);
-		
-		//Getting the points in radians
+		//Convert the points to radians
 		x1 =  Math.toRadians(x1);
 		x2 =  Math.toRadians(x2);
-		
-		//Calculating
+
 		double a =  (Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(x1) * Math.cos(x2));
 		double c =  (2 * Math.asin(Math.sqrt(a)));
 		return R * c;

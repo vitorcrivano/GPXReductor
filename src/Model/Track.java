@@ -44,7 +44,7 @@ public class Track {
 	}
 
 	//Count the number of track points
-	public int countTrackPoints() 
+	public int TrackPointsCounter() 
         {
 		
 		//Total of points
