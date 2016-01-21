@@ -16,20 +16,17 @@ public class CalculatorTest {
 		double expectedResult = -1/2;
 			
 		//delta as 0.7
-	    assertEquals(result, expectedResult, 0.7); 
-			
+	    assertEquals(result, expectedResult, 0.7); 	
 	}
 
 	@Test
 	//Test the YIntercept function
 	public void YInterceptTest() {
-		
 		double result = MathCalcultaorOfDistance.calculateYIntercept(2, 3, 10);
 		double expectedResult = 4.0;
 			
 		//delta as 0.7
-	    assertEquals(result, expectedResult, 0.); 
-			
+	    assertEquals(result, expectedResult, 0.); 		
 	}
 
 	@Test
@@ -41,10 +38,9 @@ public class CalculatorTest {
 		double hResult = 0.019631296425057555;
 		
 		//Testing with the delta as 1
-        assertEquals(h, hResult, 1); 
-		
+        assertEquals(h, hResult, 1); 	
 	}
-
+        
 	@Test
 	//Test the Slope Function
 	public void SlopeTest() {
@@ -56,8 +52,4 @@ public class CalculatorTest {
         assertEquals(result, expectedResult, 0.7); 
 		
 	}
-	
-	
-	
-	
 }
